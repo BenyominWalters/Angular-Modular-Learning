@@ -1,0 +1,64 @@
+<div class="container" *ngIf="challenge">
+    <div class="mdl-grid">
+
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+            <div class="mdl-card mdl-shadow--2dp challenge-panel">
+                <h4 class="challenge-panel-title">{{challenge.name}}</h4>
+                <div class="mdl-card__actions mdl-card--border"></div>
+                <div class="mdl-card__supporting-text overflow" id="desc" [innerHTML]="challenge.desc"></div>
+              </div>
+
+              <div class="mdl-card mdl-shadow--2dp challenge-panel challenge-panel-bottom">
+                <h4 class="challenge-panel-title">Status</h4>
+                <div class="mdl-card__actions mdl-card--border"></div>
+                <div class="mdl-card__supporting-text overflow">
+                    <div #mocha id="mocha"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+
+            <div class="mdl-card mdl-shadow--2dp challenge-panel">
+                <h4 class="challenge-panel-title clearfix">Editor
+                  <a (click)="resetEditor()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect pull-right">
+                      Reset
+                  </a>
+                </h4>
+
+                <div class="mdl-card__actions.mdl-card--border overflow">
+                    <div
+                        #editor
+                        ace-editor
+                        [(text)]="text"
+                        [mode]="'html'"
+                        [options]="options"
+                        (keyup)="setPreview()"
+                    ></div>
+                </div>
+                <!--
+                <div class="mdl-card__actions mdl-card--border">
+                    <a (click)="resetEditor()" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Reset
+                    </a>
+                </div>
+              -->
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp challenge-panel challenge-panel-bottom">
+                <h4 class="browser-preview-title">
+                  <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                  &nbsp;&nbsp;
+                  <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                  &nbsp;&nbsp;
+                  <span class="browser-preview-address-bar">bootcamp-demo-browser</span>
+                  &nbsp;&nbsp;
+                  <i class="fa fa-refresh browser-btn" aria-hidden="true"></i></h4>
+                <div class="mdl-card--border" >
+                <iframe #iframe id="iframe" frameborder="0" class="iframe overflow"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
